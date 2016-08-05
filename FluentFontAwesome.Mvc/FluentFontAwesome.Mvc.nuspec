@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/srigaux/FluentFontAwesome/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/srigaux/FluentFontAwesome</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial commit.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>FontAwesome Fluent Icon Icons Html Mvc Helper ASP.Net MVC</tags>
+  </metadata>
+</package>
