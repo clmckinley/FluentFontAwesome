@@ -2,23 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
     <Version>2.0.0</Version>
-    <Authors>Sébastien Rigaux</Authors>
-    <Company>Sébastien Rigaux</Company>
-    <Product>FluentFontAwesome</Product>
-    <Description>Provides HtmlHelpers for the FontAwesome CSS framework.</Description>
-    <PackageLicenseUrl>https://github.com/srigaux/FluentFontAwesome/blob/master/license.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/srigaux/FluentFontAwesome</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/srigaux/FluentFontAwesome/blob/master/license.txt</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/srigaux/FluentFontAwesome</RepositoryUrl>
-    <PackageTags>FontAwesome Fluent Icon Icons Asp Mvc Asp.Mvc HtmlHelper HtmlHelpers fa</PackageTags>
+    <PackageTags>FontAwesome Fluent Icon Icons AspNetCore TagHelper TagHelpers HtmlHelper HtmlHelpers Mvc fa</PackageTags>
     <PackageReleaseNotes>FontAwesome v4.7</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Sébastien Rigaux</Company>
+    <Authors>Sébastien Rigaux</Authors>
+    <Product>FluentFontAwesome</Product>
+    <Description>Provides HtmlHelpers and AspNetCore Mvc TagHelpers for the FontAwesome CSS framework.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
