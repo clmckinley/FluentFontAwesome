@@ -20,7 +20,7 @@ namespace FluentFontAwesome
 
         public FontAwesomeIconBuilder(string name)
         {
-            Name(_name);
+            Name(name);
         }
 
         public FontAwesomeIconBuilder(FontAwesomeIcon icon)
