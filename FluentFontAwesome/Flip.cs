@@ -4,6 +4,7 @@ namespace FluentFontAwesome
     {
         None,
         Horizontal,
-        Vertical
+        Vertical,
+        Both
     }
 }

@@ -5,11 +5,14 @@ namespace FluentFontAwesome
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum Size
     {
+        xSmall,
+        Small,
         Normal,
         Large,
         x2,
         x3,
-        x4,
-        x5
+        x5,
+        x7,
+        x10
     }
 }

@@ -38,6 +38,7 @@
     <Compile Include="Flip.cs" />
     <Compile Include="FontAwesomeIcon.cs" />
     <Compile Include="Pull.cs" />
+    <Compile Include="Rendering.cs" />
     <Compile Include="Rotation.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
