@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Flip.cs" />
+    <Compile Include="FontAwesomeEnum.cs" />
     <Compile Include="FontAwesomeIcon.cs" />
     <Compile Include="Pull.cs" />
     <Compile Include="Rendering.cs" />

@@ -41,6 +41,10 @@ namespace FluentFontAwesome
         {
             Name(name);
         }
+        public FontAwesomeIcon(FontAwesomeIconsEnum name)
+        {
+            Name(name.ToString());
+        }
 
         public string GetTag(FontAwesomeTagSettings tagSettings = null)
         {

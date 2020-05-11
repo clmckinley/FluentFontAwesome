@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentFontAwesome", "FluentFontAwesome\FluentFontAwesome.csproj", "{366E3C70-DF2E-4496-AA6E-364983EC9E59}"
 EndProject
@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		license.txt = license.txt
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentFontAwesome.MvcCore", "FluentFontAwesome.MvcCore\FluentFontAwesome.MvcCore.csproj", "{3DDA184B-69BB-421B-9EC9-A0031C809182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +29,15 @@ Global
 		{FC8D3D7D-DFBF-4D0E-90BC-7B51C58A1CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8D3D7D-DFBF-4D0E-90BC-7B51C58A1CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8D3D7D-DFBF-4D0E-90BC-7B51C58A1CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DDA184B-69BB-421B-9EC9-A0031C809182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDA184B-69BB-421B-9EC9-A0031C809182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DDA184B-69BB-421B-9EC9-A0031C809182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DDA184B-69BB-421B-9EC9-A0031C809182}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF1382D2-6BB3-468F-9D24-D313FA7403F8}
 	EndGlobalSection
 EndGlobal
