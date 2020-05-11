@@ -1,1375 +1,2790 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FluentFontAwesome
 {
+    [AttributeUsage(AttributeTargets.Struct)]
+    public class RenderingAttribute : Attribute
+    {
+        public Rendering Rendering { get; set; }
+        public RenderingAttribute(Rendering rendering)
+        {
+            Rendering = Rendering;
+        }
+    }
     public enum FontAwesomeIconsEnum
     {
+        [Description("500px")]
         Icon500px,
+        [Description("accessible-icon")]
         AccessibleIcon,
+        [Description("accusoft")]
         Accusoft,
+        [Description("acquisitions-incorporated")]
         AcquisitionsIncorporated,
+        [Description("ad")]
         Ad,
+        [Description("address-book")]
         AddressBook,
+        [Description("address-card")]
         AddressCard,
+        [Description("adjust")]
         Adjust,
+        [Description("adn")]
         Adn,
+        [Description("adobe")]
         Adobe,
+        [Description("adversal")]
         Adversal,
+        [Description("affiliatetheme")]
         Affiliatetheme,
+        [Description("air-freshener")]
         AirFreshener,
+        [Description("airbnb")]
         Airbnb,
+        [Description("algolia")]
         Algolia,
+        [Description("align-center")]
         AlignCenter,
+        [Description("align-justify")]
         AlignJustify,
+        [Description("align-left")]
         AlignLeft,
+        [Description("align-right")]
         AlignRight,
+        [Description("alipay")]
         Alipay,
+        [Description("allergies")]
         Allergies,
+        [Description("amazon")]
         Amazon,
+        [Description("amazon-pay")]
         AmazonPay,
+        [Description("ambulance")]
         Ambulance,
+        [Description("american-sign-language-interpreting")]
         AmericanSignLanguageInterpreting,
+        [Description("amilia")]
         Amilia,
+        [Description("anchor")]
         Anchor,
+        [Description("android")]
         Android,
+        [Description("angellist")]
         Angellist,
+        [Description("angle-double-down")]
         AngleDoubleDown,
+        [Description("angle-double-left")]
         AngleDoubleLeft,
+        [Description("angle-double-right")]
         AngleDoubleRight,
+        [Description("angle-double-up")]
         AngleDoubleUp,
+        [Description("angle-down")]
         AngleDown,
+        [Description("angle-left")]
         AngleLeft,
+        [Description("angle-right")]
         AngleRight,
+        [Description("angle-up")]
         AngleUp,
+        [Description("angry")]
         Angry,
+        [Description("angrycreative")]
         Angrycreative,
+        [Description("angular")]
         Angular,
+        [Description("ankh")]
         Ankh,
+        [Description("app-store")]
         AppStore,
+        [Description("app-store-ios")]
         AppStoreIos,
+        [Description("apper")]
         Apper,
+        [Description("apple")]
         Apple,
+        [Description("apple-alt")]
         AppleAlt,
+        [Description("apple-pay")]
         ApplePay,
+        [Description("archive")]
         Archive,
+        [Description("archway")]
         Archway,
+        [Description("arrow-alt-circle-down")]
         ArrowAltCircleDown,
+        [Description("arrow-alt-circle-left")]
         ArrowAltCircleLeft,
+        [Description("arrow-alt-circle-right")]
         ArrowAltCircleRight,
+        [Description("arrow-alt-circle-up")]
         ArrowAltCircleUp,
+        [Description("arrow-circle-down")]
         ArrowCircleDown,
+        [Description("arrow-circle-left")]
         ArrowCircleLeft,
+        [Description("arrow-circle-right")]
         ArrowCircleRight,
+        [Description("arrow-circle-up")]
         ArrowCircleUp,
+        [Description("arrow-down")]
         ArrowDown,
+        [Description("arrow-left")]
         ArrowLeft,
+        [Description("arrow-right")]
         ArrowRight,
+        [Description("arrow-up")]
         ArrowUp,
+        [Description("arrows-alt")]
         ArrowsAlt,
+        [Description("arrows-alt-h")]
         ArrowsAltH,
+        [Description("arrows-alt-v")]
         ArrowsAltV,
+        [Description("artstation")]
         Artstation,
+        [Description("assistive-listening-systems")]
         AssistiveListeningSystems,
+        [Description("asterisk")]
         Asterisk,
+        [Description("asymmetrik")]
         Asymmetrik,
+        [Description("at")]
         At,
+        [Description("atlas")]
         Atlas,
+        [Description("atlassian")]
         Atlassian,
+        [Description("atom")]
         Atom,
+        [Description("audible")]
         Audible,
+        [Description("audio-description")]
         AudioDescription,
+        [Description("autoprefixer")]
         Autoprefixer,
+        [Description("avianex")]
         Avianex,
+        [Description("aviato")]
         Aviato,
+        [Description("award")]
         Award,
+        [Description("aws")]
         Aws,
+        [Description("baby")]
         Baby,
+        [Description("baby-carriage")]
         BabyCarriage,
+        [Description("backspace")]
         Backspace,
+        [Description("backward")]
         Backward,
+        [Description("bacon")]
         Bacon,
+        [Description("balance-scale")]
         BalanceScale,
+        [Description("ban")]
         Ban,
+        [Description("band-aid")]
         BandAid,
+        [Description("bandcamp")]
         Bandcamp,
+        [Description("barcode")]
         Barcode,
+        [Description("bars")]
         Bars,
+        [Description("baseball-ball")]
         BaseballBall,
+        [Description("basketball-ball")]
         BasketballBall,
+        [Description("bath")]
         Bath,
+        [Description("battery-empty")]
         BatteryEmpty,
+        [Description("battery-full")]
         BatteryFull,
+        [Description("battery-half")]
         BatteryHalf,
+        [Description("battery-quarter")]
         BatteryQuarter,
+        [Description("battery-three-quarters")]
         BatteryThreeQuarters,
+        [Description("battle-net")]
         BattleNet,
+        [Description("bed")]
         Bed,
+        [Description("beer")]
         Beer,
+        [Description("behance")]
         Behance,
+        [Description("behance-square")]
         BehanceSquare,
+        [Description("bell")]
         Bell,
+        [Description("bell-slash")]
         BellSlash,
+        [Description("bezier-curve")]
         BezierCurve,
+        [Description("bible")]
         Bible,
+        [Description("bicycle")]
         Bicycle,
+        [Description("bimobject")]
         Bimobject,
+        [Description("binoculars")]
         Binoculars,
+        [Description("biohazard")]
         Biohazard,
+        [Description("birthday-cake")]
         BirthdayCake,
+        [Description("bitbucket")]
         Bitbucket,
+        [Description("bitcoin")]
         Bitcoin,
+        [Description("bity")]
         Bity,
+        [Description("black-tie")]
         BlackTie,
+        [Description("blackberry")]
         Blackberry,
+        [Description("blender")]
         Blender,
+        [Description("blender-phone")]
         BlenderPhone,
+        [Description("blind")]
         Blind,
+        [Description("blog")]
         Blog,
+        [Description("blogger")]
         Blogger,
+        [Description("blogger-b")]
         BloggerB,
+        [Description("bluetooth")]
         Bluetooth,
+        [Description("bluetooth-b")]
         BluetoothB,
+        [Description("bold")]
         Bold,
+        [Description("bolt")]
         Bolt,
+        [Description("bomb")]
         Bomb,
+        [Description("bone")]
         Bone,
+        [Description("bong")]
         Bong,
+        [Description("book")]
         Book,
+        [Description("book-dead")]
         BookDead,
+        [Description("book-medical")]
         BookMedical,
+        [Description("book-open")]
         BookOpen,
+        [Description("book-reader")]
         BookReader,
+        [Description("bookmark")]
         Bookmark,
+        [Description("bootstrap")]
         Bootstrap,
+        [Description("bowling-ball")]
         BowlingBall,
+        [Description("box")]
         Box,
+        [Description("box-open")]
         BoxOpen,
+        [Description("boxes")]
         Boxes,
+        [Description("braille")]
         Braille,
+        [Description("brain")]
         Brain,
+        [Description("bread-slice")]
         BreadSlice,
+        [Description("briefcase")]
         Briefcase,
+        [Description("briefcase-medical")]
         BriefcaseMedical,
+        [Description("broadcast-tower")]
         BroadcastTower,
+        [Description("broom")]
         Broom,
+        [Description("brush")]
         Brush,
+        [Description("btc")]
         Btc,
+        [Description("buffer")]
         Buffer,
+        [Description("bug")]
         Bug,
+        [Description("building")]
         Building,
+        [Description("bullhorn")]
         Bullhorn,
+        [Description("bullseye")]
         Bullseye,
+        [Description("burn")]
         Burn,
+        [Description("buromobelexperte")]
         Buromobelexperte,
+        [Description("bus")]
         Bus,
+        [Description("bus-alt")]
         BusAlt,
+        [Description("business-time")]
         BusinessTime,
+        [Description("buysellads")]
         Buysellads,
+        [Description("calculator")]
         Calculator,
+        [Description("calendar")]
         Calendar,
+        [Description("calendar-alt")]
         CalendarAlt,
+        [Description("calendar-check")]
         CalendarCheck,
+        [Description("calendar-day")]
         CalendarDay,
+        [Description("calendar-minus")]
         CalendarMinus,
+        [Description("calendar-plus")]
         CalendarPlus,
+        [Description("calendar-times")]
         CalendarTimes,
+        [Description("calendar-week")]
         CalendarWeek,
+        [Description("camera")]
         Camera,
+        [Description("camera-retro")]
         CameraRetro,
+        [Description("campground")]
         Campground,
+        [Description("canadian-maple-leaf")]
         CanadianMapleLeaf,
+        [Description("candy-cane")]
         CandyCane,
+        [Description("cannabis")]
         Cannabis,
+        [Description("capsules")]
         Capsules,
+        [Description("car")]
         Car,
+        [Description("car-alt")]
         CarAlt,
+        [Description("car-battery")]
         CarBattery,
+        [Description("car-crash")]
         CarCrash,
+        [Description("car-side")]
         CarSide,
+        [Description("caret-down")]
         CaretDown,
+        [Description("caret-left")]
         CaretLeft,
+        [Description("caret-right")]
         CaretRight,
+        [Description("caret-square-down")]
         CaretSquareDown,
+        [Description("caret-square-left")]
         CaretSquareLeft,
+        [Description("caret-square-right")]
         CaretSquareRight,
+        [Description("caret-square-up")]
         CaretSquareUp,
+        [Description("caret-up")]
         CaretUp,
+        [Description("carrot")]
         Carrot,
+        [Description("cart-arrow-down")]
         CartArrowDown,
+        [Description("cart-plus")]
         CartPlus,
+        [Description("cash-register")]
         CashRegister,
+        [Description("cat")]
         Cat,
+        [Description("cc-amazon-pay")]
         CcAmazonPay,
+        [Description("cc-amex")]
         CcAmex,
+        [Description("cc-apple-pay")]
         CcApplePay,
+        [Description("cc-diners-club")]
         CcDinersClub,
+        [Description("cc-discover")]
         CcDiscover,
+        [Description("cc-jcb")]
         CcJcb,
+        [Description("cc-mastercard")]
         CcMastercard,
+        [Description("cc-paypal")]
         CcPaypal,
+        [Description("cc-stripe")]
         CcStripe,
+        [Description("cc-visa")]
         CcVisa,
+        [Description("centercode")]
         Centercode,
+        [Description("centos")]
         Centos,
+        [Description("certificate")]
         Certificate,
+        [Description("chair")]
         Chair,
+        [Description("chalkboard")]
         Chalkboard,
+        [Description("chalkboard-teacher")]
         ChalkboardTeacher,
+        [Description("charging-station")]
         ChargingStation,
+        [Description("chart-area")]
         ChartArea,
+        [Description("chart-bar")]
         ChartBar,
+        [Description("chart-line")]
         ChartLine,
+        [Description("chart-pie")]
         ChartPie,
+        [Description("check")]
         Check,
+        [Description("check-circle")]
         CheckCircle,
+        [Description("check-double")]
         CheckDouble,
+        [Description("check-square")]
         CheckSquare,
+        [Description("cheese")]
         Cheese,
+        [Description("chess")]
         Chess,
+        [Description("chess-bishop")]
         ChessBishop,
+        [Description("chess-board")]
         ChessBoard,
+        [Description("chess-king")]
         ChessKing,
+        [Description("chess-knight")]
         ChessKnight,
+        [Description("chess-pawn")]
         ChessPawn,
+        [Description("chess-queen")]
         ChessQueen,
+        [Description("chess-rook")]
         ChessRook,
+        [Description("chevron-circle-down")]
         ChevronCircleDown,
+        [Description("chevron-circle-left")]
         ChevronCircleLeft,
+        [Description("chevron-circle-right")]
         ChevronCircleRight,
+        [Description("chevron-circle-up")]
         ChevronCircleUp,
+        [Description("chevron-down")]
         ChevronDown,
+        [Description("chevron-left")]
         ChevronLeft,
+        [Description("chevron-right")]
         ChevronRight,
+        [Description("chevron-up")]
         ChevronUp,
+        [Description("child")]
         Child,
+        [Description("chrome")]
         Chrome,
+        [Description("chromecast")]
         Chromecast,
+        [Description("church")]
         Church,
+        [Description("circle")]
         Circle,
+        [Description("circle-notch")]
         CircleNotch,
+        [Description("city")]
         City,
+        [Description("clinic-medical")]
         ClinicMedical,
+        [Description("clipboard")]
         Clipboard,
+        [Description("clipboard-check")]
         ClipboardCheck,
+        [Description("clipboard-list")]
         ClipboardList,
+        [Description("clock")]
         Clock,
+        [Description("clone")]
         Clone,
+        [Description("closed-captioning")]
         ClosedCaptioning,
+        [Description("cloud")]
         Cloud,
+        [Description("cloud-download-alt")]
         CloudDownloadAlt,
+        [Description("cloud-meatball")]
         CloudMeatball,
+        [Description("cloud-moon")]
         CloudMoon,
+        [Description("cloud-moon-rain")]
         CloudMoonRain,
+        [Description("cloud-rain")]
         CloudRain,
+        [Description("cloud-showers-heavy")]
         CloudShowersHeavy,
+        [Description("cloud-sun")]
         CloudSun,
+        [Description("cloud-sun-rain")]
         CloudSunRain,
+        [Description("cloud-upload-alt")]
         CloudUploadAlt,
+        [Description("cloudscale")]
         Cloudscale,
+        [Description("cloudsmith")]
         Cloudsmith,
+        [Description("cloudversify")]
         Cloudversify,
+        [Description("cocktail")]
         Cocktail,
+        [Description("code")]
         Code,
+        [Description("code-branch")]
         CodeBranch,
+        [Description("codepen")]
         Codepen,
+        [Description("codiepie")]
         Codiepie,
+        [Description("coffee")]
         Coffee,
+        [Description("cog")]
         Cog,
+        [Description("cogs")]
         Cogs,
+        [Description("coins")]
         Coins,
+        [Description("columns")]
         Columns,
+        [Description("comment")]
         Comment,
+        [Description("comment-alt")]
         CommentAlt,
+        [Description("comment-dollar")]
         CommentDollar,
+        [Description("comment-dots")]
         CommentDots,
+        [Description("comment-medical")]
         CommentMedical,
+        [Description("comment-slash")]
         CommentSlash,
+        [Description("comments")]
         Comments,
+        [Description("comments-dollar")]
         CommentsDollar,
+        [Description("compact-disc")]
         CompactDisc,
+        [Description("compass")]
         Compass,
+        [Description("compress")]
         Compress,
+        [Description("compress-arrows-alt")]
         CompressArrowsAlt,
+        [Description("concierge-bell")]
         ConciergeBell,
+        [Description("confluence")]
         Confluence,
+        [Description("connectdevelop")]
         Connectdevelop,
+        [Description("contao")]
         Contao,
+        [Description("cookie")]
         Cookie,
+        [Description("cookie-bite")]
         CookieBite,
+        [Description("copy")]
         Copy,
+        [Description("copyright")]
         Copyright,
+        [Description("couch")]
         Couch,
+        [Description("cpanel")]
         Cpanel,
+        [Description("creative-commons")]
         CreativeCommons,
+        [Description("creative-commons-by")]
         CreativeCommonsBy,
+        [Description("creative-commons-nc")]
         CreativeCommonsNc,
+        [Description("creative-commons-nc-eu")]
         CreativeCommonsNcEu,
+        [Description("creative-commons-nc-jp")]
         CreativeCommonsNcJp,
+        [Description("creative-commons-nd")]
         CreativeCommonsNd,
+        [Description("creative-commons-pd")]
         CreativeCommonsPd,
+        [Description("creative-commons-pd-alt")]
         CreativeCommonsPdAlt,
+        [Description("creative-commons-remix")]
         CreativeCommonsRemix,
+        [Description("creative-commons-sa")]
         CreativeCommonsSa,
+        [Description("creative-commons-sampling")]
         CreativeCommonsSampling,
+        [Description("creative-commons-sampling-plus")]
         CreativeCommonsSamplingPlus,
+        [Description("creative-commons-share")]
         CreativeCommonsShare,
+        [Description("creative-commons-zero")]
         CreativeCommonsZero,
+        [Description("credit-card")]
         CreditCard,
+        [Description("critical-role")]
         CriticalRole,
+        [Description("crop")]
         Crop,
+        [Description("crop-alt")]
         CropAlt,
+        [Description("cross")]
         Cross,
+        [Description("crosshairs")]
         Crosshairs,
+        [Description("crow")]
         Crow,
+        [Description("crown")]
         Crown,
+        [Description("crutch")]
         Crutch,
+        [Description("css3")]
         Css3,
+        [Description("css3-alt")]
         Css3Alt,
+        [Description("cube")]
         Cube,
+        [Description("cubes")]
         Cubes,
+        [Description("cut")]
         Cut,
+        [Description("cuttlefish")]
         Cuttlefish,
+        [Description("d-and-d")]
         DAndD,
+        [Description("d-and-d-beyond")]
         DAndDBeyond,
+        [Description("dashcube")]
         Dashcube,
+        [Description("database")]
         Database,
+        [Description("deaf")]
         Deaf,
+        [Description("delicious")]
         Delicious,
+        [Description("democrat")]
         Democrat,
+        [Description("deploydog")]
         Deploydog,
+        [Description("deskpro")]
         Deskpro,
+        [Description("desktop")]
         Desktop,
+        [Description("dev")]
         Dev,
+        [Description("deviantart")]
         Deviantart,
+        [Description("dharmachakra")]
         Dharmachakra,
+        [Description("dhl")]
         Dhl,
+        [Description("diagnoses")]
         Diagnoses,
+        [Description("diaspora")]
         Diaspora,
+        [Description("dice")]
         Dice,
+        [Description("dice-d20")]
         DiceD20,
+        [Description("dice-d6")]
         DiceD6,
+        [Description("dice-five")]
         DiceFive,
+        [Description("dice-four")]
         DiceFour,
+        [Description("dice-one")]
         DiceOne,
+        [Description("dice-six")]
         DiceSix,
+        [Description("dice-three")]
         DiceThree,
+        [Description("dice-two")]
         DiceTwo,
+        [Description("digg")]
         Digg,
+        [Description("digital-ocean")]
         DigitalOcean,
+        [Description("digital-tachograph")]
         DigitalTachograph,
+        [Description("directions")]
         Directions,
+        [Description("discord")]
         Discord,
+        [Description("discourse")]
         Discourse,
+        [Description("divide")]
         Divide,
+        [Description("dizzy")]
         Dizzy,
+        [Description("dna")]
         Dna,
+        [Description("dochub")]
         Dochub,
+        [Description("docker")]
         Docker,
+        [Description("dog")]
         Dog,
+        [Description("dollar-sign")]
         DollarSign,
+        [Description("dolly")]
         Dolly,
+        [Description("dolly-flatbed")]
         DollyFlatbed,
+        [Description("donate")]
         Donate,
+        [Description("door-closed")]
         DoorClosed,
+        [Description("door-open")]
         DoorOpen,
+        [Description("dot-circle")]
         DotCircle,
+        [Description("dove")]
         Dove,
+        [Description("download")]
         Download,
+        [Description("draft2digital")]
         Draft2digital,
+        [Description("drafting-compass")]
         DraftingCompass,
+        [Description("dragon")]
         Dragon,
+        [Description("draw-polygon")]
         DrawPolygon,
+        [Description("dribbble")]
         Dribbble,
+        [Description("dribbble-square")]
         DribbbleSquare,
+        [Description("dropbox")]
         Dropbox,
+        [Description("drum")]
         Drum,
+        [Description("drum-steelpan")]
         DrumSteelpan,
+        [Description("drumstick-bite")]
         DrumstickBite,
+        [Description("drupal")]
         Drupal,
+        [Description("dumbbell")]
         Dumbbell,
+        [Description("dumpster")]
         Dumpster,
+        [Description("dumpster-fire")]
         DumpsterFire,
+        [Description("dungeon")]
         Dungeon,
+        [Description("dyalog")]
         Dyalog,
+        [Description("earlybirds")]
         Earlybirds,
+        [Description("ebay")]
         Ebay,
+        [Description("edge")]
         Edge,
+        [Description("edit")]
         Edit,
+        [Description("egg")]
         Egg,
+        [Description("eject")]
         Eject,
+        [Description("elementor")]
         Elementor,
+        [Description("ellipsis-h")]
         EllipsisH,
+        [Description("ellipsis-v")]
         EllipsisV,
+        [Description("ello")]
         Ello,
+        [Description("ember")]
         Ember,
+        [Description("empire")]
         Empire,
+        [Description("envelope")]
         Envelope,
+        [Description("envelope-open")]
         EnvelopeOpen,
+        [Description("envelope-open-text")]
         EnvelopeOpenText,
+        [Description("envelope-square")]
         EnvelopeSquare,
+        [Description("envira")]
         Envira,
+        [Description("equals")]
         Equals,
+        [Description("eraser")]
         Eraser,
+        [Description("erlang")]
         Erlang,
+        [Description("ethereum")]
         Ethereum,
+        [Description("ethernet")]
         Ethernet,
+        [Description("etsy")]
         Etsy,
+        [Description("euro-sign")]
         EuroSign,
+        [Description("evernote")]
         Evernote,
+        [Description("exchange-alt")]
         ExchangeAlt,
+        [Description("exclamation")]
         Exclamation,
+        [Description("exclamation-circle")]
         ExclamationCircle,
+        [Description("exclamation-triangle")]
         ExclamationTriangle,
+        [Description("expand")]
         Expand,
+        [Description("expand-arrows-alt")]
         ExpandArrowsAlt,
+        [Description("expeditedssl")]
         Expeditedssl,
+        [Description("external-link-alt")]
         ExternalLinkAlt,
+        [Description("external-link-square-alt")]
         ExternalLinkSquareAlt,
+        [Description("eye")]
         Eye,
+        [Description("eye-dropper")]
         EyeDropper,
+        [Description("eye-slash")]
         EyeSlash,
+        [Description("facebook")]
         Facebook,
+        [Description("facebook-f")]
         FacebookF,
+        [Description("facebook-messenger")]
         FacebookMessenger,
+        [Description("facebook-square")]
         FacebookSquare,
+        [Description("fantasy-flight-games")]
         FantasyFlightGames,
+        [Description("fast-backward")]
         FastBackward,
+        [Description("fast-forward")]
         FastForward,
+        [Description("fax")]
         Fax,
+        [Description("feather")]
         Feather,
+        [Description("feather-alt")]
         FeatherAlt,
+        [Description("fedex")]
         Fedex,
+        [Description("fedora")]
         Fedora,
+        [Description("female")]
         Female,
+        [Description("fighter-jet")]
         FighterJet,
+        [Description("figma")]
         Figma,
+        [Description("file")]
         File,
+        [Description("file-alt")]
         FileAlt,
+        [Description("file-archive")]
         FileArchive,
+        [Description("file-audio")]
         FileAudio,
+        [Description("file-code")]
         FileCode,
+        [Description("file-contract")]
         FileContract,
+        [Description("file-csv")]
         FileCsv,
+        [Description("file-download")]
         FileDownload,
+        [Description("file-excel")]
         FileExcel,
+        [Description("file-export")]
         FileExport,
+        [Description("file-image")]
         FileImage,
+        [Description("file-import")]
         FileImport,
+        [Description("file-invoice")]
         FileInvoice,
+        [Description("file-invoice-dollar")]
         FileInvoiceDollar,
+        [Description("file-medical")]
         FileMedical,
+        [Description("file-medical-alt")]
         FileMedicalAlt,
+        [Description("file-pdf")]
         FilePdf,
+        [Description("file-powerpoint")]
         FilePowerpoint,
+        [Description("file-prescription")]
         FilePrescription,
+        [Description("file-signature")]
         FileSignature,
+        [Description("file-upload")]
         FileUpload,
+        [Description("file-video")]
         FileVideo,
+        [Description("file-word")]
         FileWord,
+        [Description("fill")]
         Fill,
+        [Description("fill-drip")]
         FillDrip,
+        [Description("film")]
         Film,
+        [Description("filter")]
         Filter,
+        [Description("fingerprint")]
         Fingerprint,
+        [Description("fire")]
         Fire,
+        [Description("fire-alt")]
         FireAlt,
+        [Description("fire-extinguisher")]
         FireExtinguisher,
+        [Description("firefox")]
         Firefox,
+        [Description("first-aid")]
         FirstAid,
+        [Description("first-order")]
         FirstOrder,
+        [Description("first-order-alt")]
         FirstOrderAlt,
+        [Description("firstdraft")]
         Firstdraft,
+        [Description("fish")]
         Fish,
+        [Description("fist-raised")]
         FistRaised,
+        [Description("flag")]
         Flag,
+        [Description("flag-checkered")]
         FlagCheckered,
+        [Description("flag-usa")]
         FlagUsa,
+        [Description("flask")]
         Flask,
+        [Description("flickr")]
         Flickr,
+        [Description("flipboard")]
         Flipboard,
+        [Description("flushed")]
         Flushed,
+        [Description("fly")]
         Fly,
+        [Description("folder")]
         Folder,
+        [Description("folder-minus")]
         FolderMinus,
+        [Description("folder-open")]
         FolderOpen,
+        [Description("folder-plus")]
         FolderPlus,
+        [Description("font")]
         Font,
+        [Description("font-awesome")]
         FontAwesome,
+        [Description("font-awesome-alt")]
         FontAwesomeAlt,
+        [Description("font-awesome-flag")]
         FontAwesomeFlag,
+        [Description("font-awesome-logo-full")]
         FontAwesomeLogoFull,
+        [Description("fonticons")]
         Fonticons,
+        [Description("fonticons-fi")]
         FonticonsFi,
+        [Description("football-ball")]
         FootballBall,
+        [Description("fort-awesome")]
         FortAwesome,
+        [Description("fort-awesome-alt")]
         FortAwesomeAlt,
+        [Description("forumbee")]
         Forumbee,
+        [Description("forward")]
         Forward,
+        [Description("foursquare")]
         Foursquare,
+        [Description("free-code-camp")]
         FreeCodeCamp,
+        [Description("freebsd")]
         Freebsd,
+        [Description("frog")]
         Frog,
+        [Description("frown")]
         Frown,
+        [Description("frown-open")]
         FrownOpen,
+        [Description("fulcrum")]
         Fulcrum,
+        [Description("funnel-dollar")]
         FunnelDollar,
+        [Description("futbol")]
         Futbol,
+        [Description("galactic-republic")]
         GalacticRepublic,
+        [Description("galactic-senate")]
         GalacticSenate,
+        [Description("gamepad")]
         Gamepad,
+        [Description("gas-pump")]
         GasPump,
+        [Description("gavel")]
         Gavel,
+        [Description("gem")]
         Gem,
+        [Description("genderless")]
         Genderless,
+        [Description("get-pocket")]
         GetPocket,
+        [Description("gg")]
         Gg,
+        [Description("gg-circle")]
         GgCircle,
+        [Description("ghost")]
         Ghost,
+        [Description("gift")]
         Gift,
+        [Description("gifts")]
         Gifts,
+        [Description("git")]
         Git,
+        [Description("git-square")]
         GitSquare,
+        [Description("github")]
         Github,
+        [Description("github-alt")]
         GithubAlt,
+        [Description("github-square")]
         GithubSquare,
+        [Description("gitkraken")]
         Gitkraken,
+        [Description("gitlab")]
         Gitlab,
+        [Description("gitter")]
         Gitter,
+        [Description("glass-cheers")]
         GlassCheers,
+        [Description("glass-martini")]
         GlassMartini,
+        [Description("glass-martini-alt")]
         GlassMartiniAlt,
+        [Description("glass-whiskey")]
         GlassWhiskey,
+        [Description("glasses")]
         Glasses,
+        [Description("glide")]
         Glide,
+        [Description("glide-g")]
         GlideG,
+        [Description("globe")]
         Globe,
+        [Description("globe-africa")]
         GlobeAfrica,
+        [Description("globe-americas")]
         GlobeAmericas,
+        [Description("globe-asia")]
         GlobeAsia,
+        [Description("globe-europe")]
         GlobeEurope,
+        [Description("gofore")]
         Gofore,
+        [Description("golf-ball")]
         GolfBall,
+        [Description("goodreads")]
         Goodreads,
+        [Description("goodreads-g")]
         GoodreadsG,
+        [Description("google")]
         Google,
+        [Description("google-drive")]
         GoogleDrive,
+        [Description("google-play")]
         GooglePlay,
+        [Description("google-plus")]
         GooglePlus,
+        [Description("google-plus-g")]
         GooglePlusG,
+        [Description("google-plus-square")]
         GooglePlusSquare,
+        [Description("google-wallet")]
         GoogleWallet,
+        [Description("gopuram")]
         Gopuram,
+        [Description("graduation-cap")]
         GraduationCap,
+        [Description("gratipay")]
         Gratipay,
+        [Description("grav")]
         Grav,
+        [Description("greater-than")]
         GreaterThan,
+        [Description("greater-than-equal")]
         GreaterThanEqual,
+        [Description("grimace")]
         Grimace,
+        [Description("grin")]
         Grin,
+        [Description("grin-alt")]
         GrinAlt,
+        [Description("grin-beam")]
         GrinBeam,
+        [Description("grin-beam-sweat")]
         GrinBeamSweat,
+        [Description("grin-hearts")]
         GrinHearts,
+        [Description("grin-squint")]
         GrinSquint,
+        [Description("grin-squint-tears")]
         GrinSquintTears,
+        [Description("grin-stars")]
         GrinStars,
+        [Description("grin-tears")]
         GrinTears,
+        [Description("grin-tongue")]
         GrinTongue,
+        [Description("grin-tongue-squint")]
         GrinTongueSquint,
+        [Description("grin-tongue-wink")]
         GrinTongueWink,
+        [Description("grin-wink")]
         GrinWink,
+        [Description("grip-horizontal")]
         GripHorizontal,
+        [Description("grip-lines")]
         GripLines,
+        [Description("grip-lines-vertical")]
         GripLinesVertical,
+        [Description("grip-vertical")]
         GripVertical,
+        [Description("gripfire")]
         Gripfire,
+        [Description("grunt")]
         Grunt,
+        [Description("guitar")]
         Guitar,
+        [Description("gulp")]
         Gulp,
+        [Description("h-square")]
         HSquare,
+        [Description("hacker-news")]
         HackerNews,
+        [Description("hacker-news-square")]
         HackerNewsSquare,
+        [Description("hackerrank")]
         Hackerrank,
+        [Description("hamburger")]
         Hamburger,
+        [Description("hammer")]
         Hammer,
+        [Description("hamsa")]
         Hamsa,
+        [Description("hand-holding")]
         HandHolding,
+        [Description("hand-holding-heart")]
         HandHoldingHeart,
+        [Description("hand-holding-usd")]
         HandHoldingUsd,
+        [Description("hand-lizard")]
         HandLizard,
+        [Description("hand-middle-finger")]
         HandMiddleFinger,
+        [Description("hand-paper")]
         HandPaper,
+        [Description("hand-peace")]
         HandPeace,
+        [Description("hand-point-down")]
         HandPointDown,
+        [Description("hand-point-left")]
         HandPointLeft,
+        [Description("hand-point-right")]
         HandPointRight,
+        [Description("hand-point-up")]
         HandPointUp,
+        [Description("hand-pointer")]
         HandPointer,
+        [Description("hand-rock")]
         HandRock,
+        [Description("hand-scissors")]
         HandScissors,
+        [Description("hand-spock")]
         HandSpock,
+        [Description("hands")]
         Hands,
+        [Description("hands-helping")]
         HandsHelping,
+        [Description("handshake")]
         Handshake,
+        [Description("hanukiah")]
         Hanukiah,
+        [Description("hard-hat")]
         HardHat,
+        [Description("hashtag")]
         Hashtag,
+        [Description("hat-wizard")]
         HatWizard,
+        [Description("haykal")]
         Haykal,
+        [Description("hdd")]
         Hdd,
+        [Description("heading")]
         Heading,
+        [Description("headphones")]
         Headphones,
+        [Description("headphones-alt")]
         HeadphonesAlt,
+        [Description("headset")]
         Headset,
+        [Description("heart")]
         Heart,
+        [Description("heart-broken")]
         HeartBroken,
+        [Description("heartbeat")]
         Heartbeat,
+        [Description("helicopter")]
         Helicopter,
+        [Description("highlighter")]
         Highlighter,
+        [Description("hiking")]
         Hiking,
+        [Description("hippo")]
         Hippo,
+        [Description("hips")]
         Hips,
+        [Description("hire-a-helper")]
         HireAHelper,
+        [Description("history")]
         History,
+        [Description("hockey-puck")]
         HockeyPuck,
+        [Description("holly-berry")]
         HollyBerry,
+        [Description("home")]
         Home,
+        [Description("hooli")]
         Hooli,
+        [Description("hornbill")]
         Hornbill,
+        [Description("horse")]
         Horse,
+        [Description("horse-head")]
         HorseHead,
+        [Description("hospital")]
         Hospital,
+        [Description("hospital-alt")]
         HospitalAlt,
+        [Description("hospital-symbol")]
         HospitalSymbol,
+        [Description("hot-tub")]
         HotTub,
+        [Description("hotdog")]
         Hotdog,
+        [Description("hotel")]
         Hotel,
+        [Description("hotjar")]
         Hotjar,
+        [Description("hourglass")]
         Hourglass,
+        [Description("hourglass-end")]
         HourglassEnd,
+        [Description("hourglass-half")]
         HourglassHalf,
+        [Description("hourglass-start")]
         HourglassStart,
+        [Description("house-damage")]
         HouseDamage,
+        [Description("houzz")]
         Houzz,
+        [Description("hryvnia")]
         Hryvnia,
+        [Description("html5")]
         Html5,
+        [Description("hubspot")]
         Hubspot,
+        [Description("i-cursor")]
         ICursor,
+        [Description("ice-cream")]
         IceCream,
+        [Description("icicles")]
         Icicles,
+        [Description("id-badge")]
         IdBadge,
+        [Description("id-card")]
         IdCard,
+        [Description("id-card-alt")]
         IdCardAlt,
+        [Description("igloo")]
         Igloo,
+        [Description("image")]
         Image,
+        [Description("images")]
         Images,
+        [Description("imdb")]
         Imdb,
+        [Description("inbox")]
         Inbox,
+        [Description("indent")]
         Indent,
+        [Description("industry")]
         Industry,
+        [Description("infinity")]
         Infinity,
+        [Description("info")]
         Info,
+        [Description("info-circle")]
         InfoCircle,
+        [Description("instagram")]
         Instagram,
+        [Description("intercom")]
         Intercom,
+        [Description("internet-explorer")]
         InternetExplorer,
+        [Description("invision")]
         Invision,
+        [Description("ioxhost")]
         Ioxhost,
+        [Description("italic")]
         Italic,
+        [Description("itch-io")]
         ItchIo,
+        [Description("itunes")]
         Itunes,
+        [Description("itunes-note")]
         ItunesNote,
+        [Description("java")]
         Java,
+        [Description("jedi")]
         Jedi,
+        [Description("jedi-order")]
         JediOrder,
+        [Description("jenkins")]
         Jenkins,
+        [Description("jira")]
         Jira,
+        [Description("joget")]
         Joget,
+        [Description("joint")]
         Joint,
+        [Description("joomla")]
         Joomla,
+        [Description("journal-whills")]
         JournalWhills,
+        [Description("js")]
         Js,
+        [Description("js-square")]
         JsSquare,
+        [Description("jsfiddle")]
         Jsfiddle,
+        [Description("kaaba")]
         Kaaba,
+        [Description("kaggle")]
         Kaggle,
+        [Description("key")]
         Key,
+        [Description("keybase")]
         Keybase,
+        [Description("keyboard")]
         Keyboard,
+        [Description("keycdn")]
         Keycdn,
+        [Description("khanda")]
         Khanda,
+        [Description("kickstarter")]
         Kickstarter,
+        [Description("kickstarter-k")]
         KickstarterK,
+        [Description("kiss")]
         Kiss,
+        [Description("kiss-beam")]
         KissBeam,
+        [Description("kiss-wink-heart")]
         KissWinkHeart,
+        [Description("kiwi-bird")]
         KiwiBird,
+        [Description("korvue")]
         Korvue,
+        [Description("landmark")]
         Landmark,
+        [Description("language")]
         Language,
+        [Description("laptop")]
         Laptop,
+        [Description("laptop-code")]
         LaptopCode,
+        [Description("laptop-medical")]
         LaptopMedical,
+        [Description("laravel")]
         Laravel,
+        [Description("lastfm")]
         Lastfm,
+        [Description("lastfm-square")]
         LastfmSquare,
+        [Description("laugh")]
         Laugh,
+        [Description("laugh-beam")]
         LaughBeam,
+        [Description("laugh-squint")]
         LaughSquint,
+        [Description("laugh-wink")]
         LaughWink,
+        [Description("layer-group")]
         LayerGroup,
+        [Description("leaf")]
         Leaf,
+        [Description("leanpub")]
         Leanpub,
+        [Description("lemon")]
         Lemon,
+        [Description("less")]
         Less,
+        [Description("less-than")]
         LessThan,
+        [Description("less-than-equal")]
         LessThanEqual,
+        [Description("level-down-alt")]
         LevelDownAlt,
+        [Description("level-up-alt")]
         LevelUpAlt,
+        [Description("life-ring")]
         LifeRing,
+        [Description("lightbulb")]
         Lightbulb,
+        [Description("line")]
         Line,
+        [Description("link")]
         Link,
+        [Description("linkedin")]
         Linkedin,
+        [Description("linkedin-in")]
         LinkedinIn,
+        [Description("linode")]
         Linode,
+        [Description("linux")]
         Linux,
+        [Description("lira-sign")]
         LiraSign,
+        [Description("list")]
         List,
+        [Description("list-alt")]
         ListAlt,
+        [Description("list-ol")]
         ListOl,
+        [Description("list-ul")]
         ListUl,
+        [Description("location-arrow")]
         LocationArrow,
+        [Description("lock")]
         Lock,
+        [Description("lock-open")]
         LockOpen,
+        [Description("long-arrow-alt-down")]
         LongArrowAltDown,
+        [Description("long-arrow-alt-left")]
         LongArrowAltLeft,
+        [Description("long-arrow-alt-right")]
         LongArrowAltRight,
+        [Description("long-arrow-alt-up")]
         LongArrowAltUp,
+        [Description("low-vision")]
         LowVision,
+        [Description("luggage-cart")]
         LuggageCart,
+        [Description("lyft")]
         Lyft,
+        [Description("magento")]
         Magento,
+        [Description("magic")]
         Magic,
+        [Description("magnet")]
         Magnet,
+        [Description("mail-bulk")]
         MailBulk,
+        [Description("mailchimp")]
         Mailchimp,
+        [Description("male")]
         Male,
+        [Description("mandalorian")]
         Mandalorian,
+        [Description("map")]
         Map,
+        [Description("map-marked")]
         MapMarked,
+        [Description("map-marked-alt")]
         MapMarkedAlt,
+        [Description("map-marker")]
         MapMarker,
+        [Description("map-marker-alt")]
         MapMarkerAlt,
+        [Description("map-pin")]
         MapPin,
+        [Description("map-signs")]
         MapSigns,
+        [Description("markdown")]
         Markdown,
+        [Description("marker")]
         Marker,
+        [Description("mars")]
         Mars,
+        [Description("mars-double")]
         MarsDouble,
+        [Description("mars-stroke")]
         MarsStroke,
+        [Description("mars-stroke-h")]
         MarsStrokeH,
+        [Description("mars-stroke-v")]
         MarsStrokeV,
+        [Description("mask")]
         Mask,
+        [Description("mastodon")]
         Mastodon,
+        [Description("maxcdn")]
         Maxcdn,
+        [Description("medal")]
         Medal,
+        [Description("medapps")]
         Medapps,
+        [Description("medium")]
         Medium,
+        [Description("medium-m")]
         MediumM,
+        [Description("medkit")]
         Medkit,
+        [Description("medrt")]
         Medrt,
+        [Description("meetup")]
         Meetup,
+        [Description("megaport")]
         Megaport,
+        [Description("meh")]
         Meh,
+        [Description("meh-blank")]
         MehBlank,
+        [Description("meh-rolling-eyes")]
         MehRollingEyes,
+        [Description("memory")]
         Memory,
+        [Description("mendeley")]
         Mendeley,
+        [Description("menorah")]
         Menorah,
+        [Description("mercury")]
         Mercury,
+        [Description("meteor")]
         Meteor,
+        [Description("microchip")]
         Microchip,
+        [Description("microphone")]
         Microphone,
+        [Description("microphone-alt")]
         MicrophoneAlt,
+        [Description("microphone-alt-slash")]
         MicrophoneAltSlash,
+        [Description("microphone-slash")]
         MicrophoneSlash,
+        [Description("microscope")]
         Microscope,
+        [Description("microsoft")]
         Microsoft,
+        [Description("minus")]
         Minus,
+        [Description("minus-circle")]
         MinusCircle,
+        [Description("minus-square")]
         MinusSquare,
+        [Description("mitten")]
         Mitten,
+        [Description("mix")]
         Mix,
+        [Description("mixcloud")]
         Mixcloud,
+        [Description("mizuni")]
         Mizuni,
+        [Description("mobile")]
         Mobile,
+        [Description("mobile-alt")]
         MobileAlt,
+        [Description("modx")]
         Modx,
+        [Description("monero")]
         Monero,
+        [Description("money-bill")]
         MoneyBill,
+        [Description("money-bill-alt")]
         MoneyBillAlt,
+        [Description("money-bill-wave")]
         MoneyBillWave,
+        [Description("money-bill-wave-alt")]
         MoneyBillWaveAlt,
+        [Description("money-check")]
         MoneyCheck,
+        [Description("money-check-alt")]
         MoneyCheckAlt,
+        [Description("monument")]
         Monument,
+        [Description("moon")]
         Moon,
+        [Description("mortar-pestle")]
         MortarPestle,
+        [Description("mosque")]
         Mosque,
+        [Description("motorcycle")]
         Motorcycle,
+        [Description("mountain")]
         Mountain,
+        [Description("mouse-pointer")]
         MousePointer,
+        [Description("mug-hot")]
         MugHot,
+        [Description("music")]
         Music,
+        [Description("napster")]
         Napster,
+        [Description("neos")]
         Neos,
+        [Description("network-wired")]
         NetworkWired,
+        [Description("neuter")]
         Neuter,
+        [Description("newspaper")]
         Newspaper,
+        [Description("nimblr")]
         Nimblr,
+        [Description("nintendo-switch")]
         NintendoSwitch,
+        [Description("node")]
         Node,
+        [Description("node-js")]
         NodeJs,
+        [Description("not-equal")]
         NotEqual,
+        [Description("notes-medical")]
         NotesMedical,
+        [Description("npm")]
         Npm,
+        [Description("ns8")]
         Ns8,
+        [Description("nutritionix")]
         Nutritionix,
+        [Description("object-group")]
         ObjectGroup,
+        [Description("object-ungroup")]
         ObjectUngroup,
+        [Description("odnoklassniki")]
         Odnoklassniki,
+        [Description("odnoklassniki-square")]
         OdnoklassnikiSquare,
+        [Description("oil-can")]
         OilCan,
+        [Description("old-republic")]
         OldRepublic,
+        [Description("om")]
         Om,
+        [Description("opencart")]
         Opencart,
+        [Description("openid")]
         Openid,
+        [Description("opera")]
         Opera,
+        [Description("optin-monster")]
         OptinMonster,
+        [Description("osi")]
         Osi,
+        [Description("otter")]
         Otter,
+        [Description("outdent")]
         Outdent,
+        [Description("page4")]
         Page4,
+        [Description("pagelines")]
         Pagelines,
+        [Description("pager")]
         Pager,
+        [Description("paint-brush")]
         PaintBrush,
+        [Description("paint-roller")]
         PaintRoller,
+        [Description("palette")]
         Palette,
+        [Description("palfed")]
         Palfed,
+        [Description("pallet")]
         Pallet,
+        [Description("paper-plane")]
         PaperPlane,
+        [Description("paperclip")]
         Paperclip,
+        [Description("parachute-box")]
         ParachuteBox,
+        [Description("paragraph")]
         Paragraph,
+        [Description("parking")]
         Parking,
+        [Description("passport")]
         Passport,
+        [Description("pastafarianism")]
         Pastafarianism,
+        [Description("paste")]
         Paste,
+        [Description("patreon")]
         Patreon,
+        [Description("pause")]
         Pause,
+        [Description("pause-circle")]
         PauseCircle,
+        [Description("paw")]
         Paw,
+        [Description("paypal")]
         Paypal,
+        [Description("peace")]
         Peace,
+        [Description("pen")]
         Pen,
+        [Description("pen-alt")]
         PenAlt,
+        [Description("pen-fancy")]
         PenFancy,
+        [Description("pen-nib")]
         PenNib,
+        [Description("pen-square")]
         PenSquare,
+        [Description("pencil-alt")]
         PencilAlt,
+        [Description("pencil-ruler")]
         PencilRuler,
+        [Description("penny-arcade")]
         PennyArcade,
+        [Description("people-carry")]
         PeopleCarry,
+        [Description("pepper-hot")]
         PepperHot,
+        [Description("percent")]
         Percent,
+        [Description("percentage")]
         Percentage,
+        [Description("periscope")]
         Periscope,
+        [Description("person-booth")]
         PersonBooth,
+        [Description("phabricator")]
         Phabricator,
+        [Description("phoenix-framework")]
         PhoenixFramework,
+        [Description("phoenix-squadron")]
         PhoenixSquadron,
+        [Description("phone")]
         Phone,
+        [Description("phone-slash")]
         PhoneSlash,
+        [Description("phone-square")]
         PhoneSquare,
+        [Description("phone-volume")]
         PhoneVolume,
+        [Description("php")]
         Php,
+        [Description("pied-piper")]
         PiedPiper,
+        [Description("pied-piper-alt")]
         PiedPiperAlt,
+        [Description("pied-piper-hat")]
         PiedPiperHat,
+        [Description("pied-piper-pp")]
         PiedPiperPp,
+        [Description("piggy-bank")]
         PiggyBank,
+        [Description("pills")]
         Pills,
+        [Description("pinterest")]
         Pinterest,
+        [Description("pinterest-p")]
         PinterestP,
+        [Description("pinterest-square")]
         PinterestSquare,
+        [Description("pizza-slice")]
         PizzaSlice,
+        [Description("place-of-worship")]
         PlaceOfWorship,
+        [Description("plane")]
         Plane,
+        [Description("plane-arrival")]
         PlaneArrival,
+        [Description("plane-departure")]
         PlaneDeparture,
+        [Description("play")]
         Play,
+        [Description("play-circle")]
         PlayCircle,
+        [Description("playstation")]
         Playstation,
+        [Description("plug")]
         Plug,
+        [Description("plus")]
         Plus,
+        [Description("plus-circle")]
         PlusCircle,
+        [Description("plus-square")]
         PlusSquare,
+        [Description("podcast")]
         Podcast,
+        [Description("poll")]
         Poll,
+        [Description("poll-h")]
         PollH,
+        [Description("poo")]
         Poo,
+        [Description("poo-storm")]
         PooStorm,
+        [Description("poop")]
         Poop,
+        [Description("portrait")]
         Portrait,
+        [Description("pound-sign")]
         PoundSign,
+        [Description("power-off")]
         PowerOff,
+        [Description("pray")]
         Pray,
+        [Description("praying-hands")]
         PrayingHands,
+        [Description("prescription")]
         Prescription,
+        [Description("prescription-bottle")]
         PrescriptionBottle,
+        [Description("prescription-bottle-alt")]
         PrescriptionBottleAlt,
+        [Description("print")]
         Print,
+        [Description("procedures")]
         Procedures,
+        [Description("product-hunt")]
         ProductHunt,
+        [Description("project-diagram")]
         ProjectDiagram,
+        [Description("pushed")]
         Pushed,
+        [Description("puzzle-piece")]
         PuzzlePiece,
+        [Description("python")]
         Python,
+        [Description("qq")]
         Qq,
+        [Description("qrcode")]
         Qrcode,
+        [Description("question")]
         Question,
+        [Description("question-circle")]
         QuestionCircle,
+        [Description("quidditch")]
         Quidditch,
+        [Description("quinscape")]
         Quinscape,
+        [Description("quora")]
         Quora,
+        [Description("quote-left")]
         QuoteLeft,
+        [Description("quote-right")]
         QuoteRight,
+        [Description("quran")]
         Quran,
+        [Description("r-project")]
         RProject,
+        [Description("radiation")]
         Radiation,
+        [Description("radiation-alt")]
         RadiationAlt,
+        [Description("rainbow")]
         Rainbow,
+        [Description("random")]
         Random,
+        [Description("raspberry-pi")]
         RaspberryPi,
+        [Description("ravelry")]
         Ravelry,
+        [Description("react")]
         React,
+        [Description("reacteurope")]
         Reacteurope,
+        [Description("readme")]
         Readme,
+        [Description("rebel")]
         Rebel,
+        [Description("receipt")]
         Receipt,
+        [Description("recycle")]
         Recycle,
+        [Description("red-river")]
         RedRiver,
+        [Description("reddit")]
         Reddit,
+        [Description("reddit-alien")]
         RedditAlien,
+        [Description("reddit-square")]
         RedditSquare,
+        [Description("redhat")]
         Redhat,
+        [Description("redo")]
         Redo,
+        [Description("redo-alt")]
         RedoAlt,
+        [Description("registered")]
         Registered,
+        [Description("renren")]
         Renren,
+        [Description("reply")]
         Reply,
+        [Description("reply-all")]
         ReplyAll,
+        [Description("replyd")]
         Replyd,
+        [Description("republican")]
         Republican,
+        [Description("researchgate")]
         Researchgate,
+        [Description("resolving")]
         Resolving,
+        [Description("restroom")]
         Restroom,
+        [Description("retweet")]
         Retweet,
+        [Description("rev")]
         Rev,
+        [Description("ribbon")]
         Ribbon,
+        [Description("ring")]
         Ring,
+        [Description("road")]
         Road,
+        [Description("robot")]
         Robot,
+        [Description("rocket")]
         Rocket,
+        [Description("rocketchat")]
         Rocketchat,
+        [Description("rockrms")]
         Rockrms,
+        [Description("route")]
         Route,
+        [Description("rss")]
         Rss,
+        [Description("rss-square")]
         RssSquare,
+        [Description("ruble-sign")]
         RubleSign,
+        [Description("ruler")]
         Ruler,
+        [Description("ruler-combined")]
         RulerCombined,
+        [Description("ruler-horizontal")]
         RulerHorizontal,
+        [Description("ruler-vertical")]
         RulerVertical,
+        [Description("running")]
         Running,
+        [Description("rupee-sign")]
         RupeeSign,
+        [Description("sad-cry")]
         SadCry,
+        [Description("sad-tear")]
         SadTear,
+        [Description("safari")]
         Safari,
+        [Description("salesforce")]
         Salesforce,
+        [Description("sass")]
         Sass,
+        [Description("satellite")]
         Satellite,
+        [Description("satellite-dish")]
         SatelliteDish,
+        [Description("save")]
         Save,
+        [Description("schlix")]
         Schlix,
+        [Description("school")]
         School,
+        [Description("screwdriver")]
         Screwdriver,
+        [Description("scribd")]
         Scribd,
+        [Description("scroll")]
         Scroll,
+        [Description("sd-card")]
         SdCard,
+        [Description("search")]
         Search,
+        [Description("search-dollar")]
         SearchDollar,
+        [Description("search-location")]
         SearchLocation,
+        [Description("search-minus")]
         SearchMinus,
+        [Description("search-plus")]
         SearchPlus,
+        [Description("searchengin")]
         Searchengin,
+        [Description("seedling")]
         Seedling,
+        [Description("sellcast")]
         Sellcast,
+        [Description("sellsy")]
         Sellsy,
+        [Description("server")]
         Server,
+        [Description("servicestack")]
         Servicestack,
+        [Description("shapes")]
         Shapes,
+        [Description("share")]
         Share,
+        [Description("share-alt")]
         ShareAlt,
+        [Description("share-alt-square")]
         ShareAltSquare,
+        [Description("share-square")]
         ShareSquare,
+        [Description("shekel-sign")]
         ShekelSign,
+        [Description("shield-alt")]
         ShieldAlt,
+        [Description("ship")]
         Ship,
+        [Description("shipping-fast")]
         ShippingFast,
+        [Description("shirtsinbulk")]
         Shirtsinbulk,
+        [Description("shoe-prints")]
         ShoePrints,
+        [Description("shopping-bag")]
         ShoppingBag,
+        [Description("shopping-basket")]
         ShoppingBasket,
+        [Description("shopping-cart")]
         ShoppingCart,
+        [Description("shopware")]
         Shopware,
+        [Description("shower")]
         Shower,
+        [Description("shuttle-van")]
         ShuttleVan,
+        [Description("sign")]
         Sign,
+        [Description("sign-in-alt")]
         SignInAlt,
+        [Description("sign-language")]
         SignLanguage,
+        [Description("sign-out-alt")]
         SignOutAlt,
+        [Description("signal")]
         Signal,
+        [Description("signature")]
         Signature,
+        [Description("sim-card")]
         SimCard,
+        [Description("simplybuilt")]
         Simplybuilt,
+        [Description("sistrix")]
         Sistrix,
+        [Description("sitemap")]
         Sitemap,
+        [Description("sith")]
         Sith,
+        [Description("skating")]
         Skating,
+        [Description("sketch")]
         Sketch,
+        [Description("skiing")]
         Skiing,
+        [Description("skiing-nordic")]
         SkiingNordic,
+        [Description("skull")]
         Skull,
+        [Description("skull-crossbones")]
         SkullCrossbones,
+        [Description("skyatlas")]
         Skyatlas,
+        [Description("skype")]
         Skype,
+        [Description("slack")]
         Slack,
+        [Description("slack-hash")]
         SlackHash,
+        [Description("slash")]
         Slash,
+        [Description("sleigh")]
         Sleigh,
+        [Description("sliders-h")]
         SlidersH,
+        [Description("slideshare")]
         Slideshare,
+        [Description("smile")]
         Smile,
+        [Description("smile-beam")]
         SmileBeam,
+        [Description("smile-wink")]
         SmileWink,
+        [Description("smog")]
         Smog,
+        [Description("smoking")]
         Smoking,
+        [Description("smoking-ban")]
         SmokingBan,
+        [Description("sms")]
         Sms,
+        [Description("snapchat")]
         Snapchat,
+        [Description("snapchat-ghost")]
         SnapchatGhost,
+        [Description("snapchat-square")]
         SnapchatSquare,
+        [Description("snowboarding")]
         Snowboarding,
+        [Description("snowflake")]
         Snowflake,
+        [Description("snowman")]
         Snowman,
+        [Description("snowplow")]
         Snowplow,
+        [Description("socks")]
         Socks,
+        [Description("solar-panel")]
         SolarPanel,
+        [Description("sort")]
         Sort,
+        [Description("sort-alpha-down")]
         SortAlphaDown,
+        [Description("sort-alpha-up")]
         SortAlphaUp,
+        [Description("sort-amount-down")]
         SortAmountDown,
+        [Description("sort-amount-up")]
         SortAmountUp,
+        [Description("sort-down")]
         SortDown,
+        [Description("sort-numeric-down")]
         SortNumericDown,
+        [Description("sort-numeric-up")]
         SortNumericUp,
+        [Description("sort-up")]
         SortUp,
+        [Description("soundcloud")]
         Soundcloud,
+        [Description("sourcetree")]
         Sourcetree,
+        [Description("spa")]
         Spa,
+        [Description("space-shuttle")]
         SpaceShuttle,
+        [Description("speakap")]
         Speakap,
+        [Description("speaker-deck")]
         SpeakerDeck,
+        [Description("spider")]
         Spider,
+        [Description("spinner")]
         Spinner,
+        [Description("splotch")]
         Splotch,
+        [Description("spotify")]
         Spotify,
+        [Description("spray-can")]
         SprayCan,
+        [Description("square")]
         Square,
+        [Description("square-full")]
         SquareFull,
+        [Description("square-root-alt")]
         SquareRootAlt,
+        [Description("squarespace")]
         Squarespace,
+        [Description("stack-exchange")]
         StackExchange,
+        [Description("stack-overflow")]
         StackOverflow,
+        [Description("stamp")]
         Stamp,
+        [Description("star")]
         Star,
+        [Description("star-and-crescent")]
         StarAndCrescent,
+        [Description("star-half")]
         StarHalf,
+        [Description("star-half-alt")]
         StarHalfAlt,
+        [Description("star-of-david")]
         StarOfDavid,
+        [Description("star-of-life")]
         StarOfLife,
+        [Description("staylinked")]
         Staylinked,
+        [Description("steam")]
         Steam,
+        [Description("steam-square")]
         SteamSquare,
+        [Description("steam-symbol")]
         SteamSymbol,
+        [Description("step-backward")]
         StepBackward,
+        [Description("step-forward")]
         StepForward,
+        [Description("stethoscope")]
         Stethoscope,
+        [Description("sticker-mule")]
         StickerMule,
+        [Description("sticky-note")]
         StickyNote,
+        [Description("stop")]
         Stop,
+        [Description("stop-circle")]
         StopCircle,
+        [Description("stopwatch")]
         Stopwatch,
+        [Description("store")]
         Store,
+        [Description("store-alt")]
         StoreAlt,
+        [Description("strava")]
         Strava,
+        [Description("stream")]
         Stream,
+        [Description("street-view")]
         StreetView,
+        [Description("strikethrough")]
         Strikethrough,
+        [Description("stripe")]
         Stripe,
+        [Description("stripe-s")]
         StripeS,
+        [Description("stroopwafel")]
         Stroopwafel,
+        [Description("studiovinari")]
         Studiovinari,
+        [Description("stumbleupon")]
         Stumbleupon,
+        [Description("stumbleupon-circle")]
         StumbleuponCircle,
+        [Description("subscript")]
         Subscript,
+        [Description("subway")]
         Subway,
+        [Description("suitcase")]
         Suitcase,
+        [Description("suitcase-rolling")]
         SuitcaseRolling,
+        [Description("sun")]
         Sun,
+        [Description("superpowers")]
         Superpowers,
+        [Description("superscript")]
         Superscript,
+        [Description("supple")]
         Supple,
+        [Description("surprise")]
         Surprise,
+        [Description("suse")]
         Suse,
+        [Description("swatchbook")]
         Swatchbook,
+        [Description("swimmer")]
         Swimmer,
+        [Description("swimming-pool")]
         SwimmingPool,
+        [Description("symfony")]
         Symfony,
+        [Description("synagogue")]
         Synagogue,
+        [Description("sync")]
         Sync,
+        [Description("sync-alt")]
         SyncAlt,
+        [Description("syringe")]
         Syringe,
+        [Description("table")]
         Table,
+        [Description("table-tennis")]
         TableTennis,
+        [Description("tablet")]
         Tablet,
+        [Description("tablet-alt")]
         TabletAlt,
+        [Description("tablets")]
         Tablets,
+        [Description("tachometer-alt")]
         TachometerAlt,
+        [Description("tag")]
         Tag,
+        [Description("tags")]
         Tags,
+        [Description("tape")]
         Tape,
+        [Description("tasks")]
         Tasks,
+        [Description("taxi")]
         Taxi,
+        [Description("teamspeak")]
         Teamspeak,
+        [Description("teeth")]
         Teeth,
+        [Description("teeth-open")]
         TeethOpen,
+        [Description("telegram")]
         Telegram,
+        [Description("telegram-plane")]
         TelegramPlane,
+        [Description("temperature-high")]
         TemperatureHigh,
+        [Description("temperature-low")]
         TemperatureLow,
+        [Description("tencent-weibo")]
         TencentWeibo,
+        [Description("tenge")]
         Tenge,
+        [Description("terminal")]
         Terminal,
+        [Description("text-height")]
         TextHeight,
+        [Description("text-width")]
         TextWidth,
+        [Description("th")]
         Th,
+        [Description("th-large")]
         ThLarge,
+        [Description("th-list")]
         ThList,
+        [Description("the-red-yeti")]
         TheRedYeti,
+        [Description("theater-masks")]
         TheaterMasks,
+        [Description("themeco")]
         Themeco,
+        [Description("themeisle")]
         Themeisle,
+        [Description("thermometer")]
         Thermometer,
+        [Description("thermometer-empty")]
         ThermometerEmpty,
+        [Description("thermometer-full")]
         ThermometerFull,
+        [Description("thermometer-half")]
         ThermometerHalf,
+        [Description("thermometer-quarter")]
         ThermometerQuarter,
+        [Description("thermometer-three-quarters")]
         ThermometerThreeQuarters,
+        [Description("think-peaks")]
         ThinkPeaks,
+        [Description("thumbs-down")]
         ThumbsDown,
+        [Description("thumbs-up")]
         ThumbsUp,
+        [Description("thumbtack")]
         Thumbtack,
+        [Description("ticket-alt")]
         TicketAlt,
+        [Description("times")]
         Times,
+        [Description("times-circle")]
         TimesCircle,
+        [Description("tint")]
         Tint,
+        [Description("tint-slash")]
         TintSlash,
+        [Description("tired")]
         Tired,
+        [Description("toggle-off")]
         ToggleOff,
+        [Description("toggle-on")]
         ToggleOn,
+        [Description("toilet")]
         Toilet,
+        [Description("toilet-paper")]
         ToiletPaper,
+        [Description("toolbox")]
         Toolbox,
+        [Description("tools")]
         Tools,
+        [Description("tooth")]
         Tooth,
+        [Description("torah")]
         Torah,
+        [Description("torii-gate")]
         ToriiGate,
+        [Description("tractor")]
         Tractor,
+        [Description("trade-federation")]
         TradeFederation,
+        [Description("trademark")]
         Trademark,
+        [Description("traffic-light")]
         TrafficLight,
+        [Description("train")]
         Train,
+        [Description("tram")]
         Tram,
+        [Description("transgender")]
         Transgender,
+        [Description("transgender-alt")]
         TransgenderAlt,
+        [Description("trash")]
         Trash,
+        [Description("trash-alt")]
         TrashAlt,
+        [Description("trash-restore")]
         TrashRestore,
+        [Description("trash-restore-alt")]
         TrashRestoreAlt,
+        [Description("tree")]
         Tree,
+        [Description("trello")]
         Trello,
+        [Description("tripadvisor")]
         Tripadvisor,
+        [Description("trophy")]
         Trophy,
+        [Description("truck")]
         Truck,
+        [Description("truck-loading")]
         TruckLoading,
+        [Description("truck-monster")]
         TruckMonster,
+        [Description("truck-moving")]
         TruckMoving,
+        [Description("truck-pickup")]
         TruckPickup,
+        [Description("tshirt")]
         Tshirt,
+        [Description("tty")]
         Tty,
+        [Description("tumblr")]
         Tumblr,
+        [Description("tumblr-square")]
         TumblrSquare,
+        [Description("tv")]
         Tv,
+        [Description("twitch")]
         Twitch,
+        [Description("twitter")]
         Twitter,
+        [Description("twitter-square")]
         TwitterSquare,
+        [Description("typo3")]
         Typo3,
+        [Description("uber")]
         Uber,
+        [Description("ubuntu")]
         Ubuntu,
+        [Description("uikit")]
         Uikit,
+        [Description("umbrella")]
         Umbrella,
+        [Description("umbrella-beach")]
         UmbrellaBeach,
+        [Description("underline")]
         Underline,
+        [Description("undo")]
         Undo,
+        [Description("undo-alt")]
         UndoAlt,
+        [Description("uniregistry")]
         Uniregistry,
+        [Description("universal-access")]
         UniversalAccess,
+        [Description("university")]
         University,
+        [Description("unlink")]
         Unlink,
+        [Description("unlock")]
         Unlock,
+        [Description("unlock-alt")]
         UnlockAlt,
+        [Description("untappd")]
         Untappd,
+        [Description("upload")]
         Upload,
+        [Description("ups")]
         Ups,
+        [Description("usb")]
         Usb,
+        [Description("user")]
         User,
+        [Description("user-alt")]
         UserAlt,
+        [Description("user-alt-slash")]
         UserAltSlash,
+        [Description("user-astronaut")]
         UserAstronaut,
+        [Description("user-check")]
         UserCheck,
+        [Description("user-circle")]
         UserCircle,
+        [Description("user-clock")]
         UserClock,
+        [Description("user-cog")]
         UserCog,
+        [Description("user-edit")]
         UserEdit,
+        [Description("user-friends")]
         UserFriends,
+        [Description("user-graduate")]
         UserGraduate,
+        [Description("user-injured")]
         UserInjured,
+        [Description("user-lock")]
         UserLock,
+        [Description("user-md")]
         UserMd,
+        [Description("user-minus")]
         UserMinus,
+        [Description("user-ninja")]
         UserNinja,
+        [Description("user-nurse")]
         UserNurse,
+        [Description("user-plus")]
         UserPlus,
+        [Description("user-secret")]
         UserSecret,
+        [Description("user-shield")]
         UserShield,
+        [Description("user-slash")]
         UserSlash,
+        [Description("user-tag")]
         UserTag,
+        [Description("user-tie")]
         UserTie,
+        [Description("user-times")]
         UserTimes,
+        [Description("users")]
         Users,
+        [Description("users-cog")]
         UsersCog,
+        [Description("usps")]
         Usps,
+        [Description("ussunnah")]
         Ussunnah,
+        [Description("utensil-spoon")]
         UtensilSpoon,
+        [Description("utensils")]
         Utensils,
+        [Description("vaadin")]
         Vaadin,
+        [Description("vector-square")]
         VectorSquare,
+        [Description("venus")]
         Venus,
+        [Description("venus-double")]
         VenusDouble,
+        [Description("venus-mars")]
         VenusMars,
+        [Description("viacoin")]
         Viacoin,
+        [Description("viadeo")]
         Viadeo,
+        [Description("viadeo-square")]
         ViadeoSquare,
+        [Description("vial")]
         Vial,
+        [Description("vials")]
         Vials,
+        [Description("viber")]
         Viber,
+        [Description("video")]
         Video,
+        [Description("video-slash")]
         VideoSlash,
+        [Description("vihara")]
         Vihara,
+        [Description("vimeo")]
         Vimeo,
+        [Description("vimeo-square")]
         VimeoSquare,
+        [Description("vimeo-v")]
         VimeoV,
+        [Description("vine")]
         Vine,
+        [Description("vk")]
         Vk,
+        [Description("vnv")]
         Vnv,
+        [Description("volleyball-ball")]
         VolleyballBall,
+        [Description("volume-down")]
         VolumeDown,
+        [Description("volume-mute")]
         VolumeMute,
+        [Description("volume-off")]
         VolumeOff,
+        [Description("volume-up")]
         VolumeUp,
+        [Description("vote-yea")]
         VoteYea,
+        [Description("vr-cardboard")]
         VrCardboard,
+        [Description("vuejs")]
         Vuejs,
+        [Description("walking")]
         Walking,
+        [Description("wallet")]
         Wallet,
+        [Description("warehouse")]
         Warehouse,
+        [Description("water")]
         Water,
+        [Description("wave-square")]
         WaveSquare,
+        [Description("waze")]
         Waze,
+        [Description("weebly")]
         Weebly,
+        [Description("weibo")]
         Weibo,
+        [Description("weight")]
         Weight,
+        [Description("weight-hanging")]
         WeightHanging,
+        [Description("weixin")]
         Weixin,
+        [Description("whatsapp")]
         Whatsapp,
+        [Description("whatsapp-square")]
         WhatsappSquare,
+        [Description("wheelchair")]
         Wheelchair,
+        [Description("whmcs")]
         Whmcs,
+        [Description("wifi")]
         Wifi,
+        [Description("wikipedia-w")]
         WikipediaW,
+        [Description("wind")]
         Wind,
+        [Description("window-close")]
         WindowClose,
+        [Description("window-maximize")]
         WindowMaximize,
+        [Description("window-minimize")]
         WindowMinimize,
+        [Description("window-restore")]
         WindowRestore,
+        [Description("windows")]
         Windows,
+        [Description("wine-bottle")]
         WineBottle,
+        [Description("wine-glass")]
         WineGlass,
+        [Description("wine-glass-alt")]
         WineGlassAlt,
+        [Description("wix")]
         Wix,
+        [Description("wizards-of-the-coast")]
         WizardsOfTheCoast,
+        [Description("wolf-pack-battalion")]
         WolfPackBattalion,
+        [Description("won-sign")]
         WonSign,
+        [Description("wordpress")]
         Wordpress,
+        [Description("wordpress-simple")]
         WordpressSimple,
+        [Description("wpbeginner")]
         Wpbeginner,
+        [Description("wpexplorer")]
         Wpexplorer,
+        [Description("wpforms")]
         Wpforms,
+        [Description("wpressr")]
         Wpressr,
+        [Description("wrench")]
         Wrench,
+        [Description("x-ray")]
         XRay,
+        [Description("xbox")]
         Xbox,
+        [Description("xing")]
         Xing,
+        [Description("xing-square")]
         XingSquare,
+        [Description("y-combinator")]
         YCombinator,
+        [Description("yahoo")]
         Yahoo,
+        [Description("yammer")]
         Yammer,
+        [Description("yandex")]
         Yandex,
+        [Description("yandex-international")]
         YandexInternational,
+        [Description("yarn")]
         Yarn,
+        [Description("yelp")]
         Yelp,
+        [Description("yen-sign")]
         YenSign,
+        [Description("yin-yang")]
         YinYang,
+        [Description("yoast")]
         Yoast,
+        [Description("youtube")]
         Youtube,
+        [Description("youtube-square")]
         YoutubeSquare,
+        [Description("zhihu")]
         Zhihu,
+
+
+    }
+    public static class EnumHelper
+    {
+        public static string GetCssClassName(this FontAwesomeIconsEnum val)
+        {
+            var name = val.GetDescription();
+            if(name == null)
+            {
+                throw new ArgumentException("Desc not found");
+            }
+            return name;
+        }
+        public static string GetDescription<T>(this T e) where T : IConvertible
+        {
+            if (e is Enum)
+            {
+                Type type = e.GetType();
+                Array values = System.Enum.GetValues(type);
+
+                foreach (int val in values)
+                {
+                    if (val == e.ToInt32(CultureInfo.InvariantCulture))
+                    {
+                        var memInfo = type.GetMember(type.GetEnumName(val));
+                        var descriptionAttribute = memInfo[0]
+                            .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                            .FirstOrDefault() as DescriptionAttribute;
+
+                        if (descriptionAttribute != null)
+                        {
+                            return descriptionAttribute.Description;
+                        }
+                    }
+                }
+            }
+
+            return null; // could also return string.Empty
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace FluentFontAwesome
@@ -21,7 +23,7 @@ namespace FluentFontAwesome
     {
         private string _name;
 
-        private Size _size = FluentFontAwesome.Size.Normal;
+        private Size? _size = null;
         private bool _fixedWidth = false;
         private bool _bordered = false;
         private Pull _pull = FluentFontAwesome.Pull.None;
@@ -37,28 +39,51 @@ namespace FluentFontAwesome
         {
         }
 
-        public FontAwesomeIcon(string name)
+        public FontAwesomeIcon(string name, Rendering? rendering = null)
         {
-            Name(name);
+            Name(name, rendering);
         }
-        public FontAwesomeIcon(FontAwesomeIconsEnum name)
+        public FontAwesomeIcon(FontAwesomeIconsEnum nameEnum, Rendering? rendering = null)
         {
-            Name(name.ToString());
+            var name =  nameEnum.GetCssClassName();
+            Name(name, rendering);
         }
 
         public string GetTag(FontAwesomeTagSettings tagSettings = null)
         {
+            _size = _size ?? FluentFontAwesome.Size.Normal;
             tagSettings = tagSettings ?? FontAwesomeTagSettings.Default;
             var tagName = tagSettings.TagName;
             var quote = tagSettings.Quote;
-            var ariaHidden = tagSettings.AriaHidden ? $" aria-hidden={quote}true{quote} " : "";
-            var mask = tagSettings.MaskIcon != null ? $" data-fa-mask={quote}{tagSettings.MaskIcon.GetClass()}{quote}" : "";
-            var maskId = tagSettings.MaskId != null ? $" data-fa-mask-id={quote}{tagSettings.MaskId}{quote}" : "";
-            var transform = tagSettings.Transform != null ? $" data-fa-transform={quote}{tagSettings.Transform}{quote}" : "";
 
 
-            return $"<{tagName} class={quote}{GetClass()}{quote}{ariaHidden}{mask}{maskId}{transform}></{tagName}>";
+            var attributes = string.Join(" ", GetAttributes(tagSettings).Select(s => $"{s.Key}={quote}{s.Value}{quote}"));
+            return $"<{tagName} class={quote}{GetClass()}{quote} {attributes}></{tagName}>";
         }
+        public List<KeyValuePair<string,string>> GetAttributes(FontAwesomeTagSettings tagSettings = null)
+        {
+            var rVal = new List<KeyValuePair<string, string>>();
+            tagSettings = tagSettings ?? FontAwesomeTagSettings.Default;
+            if(tagSettings.AriaHidden == true)
+            {
+                rVal.Add(new KeyValuePair<string, string>("aria-hidden", "true"));
+            }
+            if (tagSettings.MaskIcon != null)
+            {
+                rVal.Add(new KeyValuePair<string, string>("data-fa-mask", tagSettings.MaskIcon.GetClass()));
+            }
+            if (tagSettings.MaskId != null)
+            {
+                rVal.Add(new KeyValuePair<string, string>("data-fa-mask-id=", tagSettings.MaskId));
+            }
+            if (tagSettings.Transform != null)
+            {
+                rVal.Add(new KeyValuePair<string, string>("data-fa-transform=", tagSettings.Transform));
+            }
+            return rVal;
+        }
+            
+
 
         public string GetClass() => string.Join(" ", GetClasses());
 
@@ -82,13 +107,13 @@ namespace FluentFontAwesome
                     yield return "fab";
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("_rendering");
             }
 
 
             yield return "fa-" + _name;
 
-            switch (_size)
+            switch (_size ?? FluentFontAwesome.Size.Normal)
             {
                 case FluentFontAwesome.Size.xSmall:
                     yield return "fa-xs";
@@ -138,7 +163,7 @@ namespace FluentFontAwesome
                     yield return "fa-pull-right";
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("_pull");
             }
 
             switch (_animation)
@@ -152,7 +177,7 @@ namespace FluentFontAwesome
                     yield return "fa-spin";
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("_animation");
             }
 
             switch (_rotation)
@@ -169,7 +194,7 @@ namespace FluentFontAwesome
                     yield return "fa-rotate-270";
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("_rotation");
             }
 
             switch (_flip)
@@ -186,7 +211,8 @@ namespace FluentFontAwesome
                     yield return "fa-flip-both";
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("_flip");
+
             }
         }
 
@@ -197,19 +223,27 @@ namespace FluentFontAwesome
 
         public string Name() => _name;
 
-        public FontAwesomeIcon Name(string name)
+        public FontAwesomeIcon Name(string name, Rendering? rendering = null)
         {
             if (name == null)
                 throw new ArgumentNullException(nameof(name));
-
+            name = name.ToLower(); //make sure it is lower case;
             if (name.StartsWith("fa-"))
                 name = name.Substring(3);
 
             _name = name;
+           _rendering = rendering ?? RenderingExtensions.GetRendering(_name);
+
             return this;
         }
 
-        public Size Size() => _size;
+        public Size? Size() => _size;
+
+        public FontAwesomeIcon Rendering(Rendering rendering)
+        {
+            _rendering = rendering;
+            return this;
+        }
 
         public FontAwesomeIcon Size(Size size)
         {
@@ -265,6 +299,7 @@ namespace FluentFontAwesome
             _flip = flip;
             return this;
         }
+
 
         #endregion
 
